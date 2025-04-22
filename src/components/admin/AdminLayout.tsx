@@ -1,10 +1,21 @@
 
-import { useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import { LayoutDashboard, Package, ShoppingCart, Users, Settings } from 'lucide-react';
 
 const AdminLayout = () => {
+  const location = useLocation();
   const [activePage, setActivePage] = useState('dashboard');
+
+  // Update active page based on URL path
+  useEffect(() => {
+    const path = location.pathname;
+    if (path === '/admin') setActivePage('dashboard');
+    else if (path.includes('/admin/products')) setActivePage('products');
+    else if (path.includes('/admin/orders')) setActivePage('orders');
+    else if (path.includes('/admin/users')) setActivePage('users');
+    else if (path.includes('/admin/settings')) setActivePage('settings');
+  }, [location.pathname]);
 
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: <LayoutDashboard size={20} />, path: '/admin' },
@@ -42,7 +53,7 @@ const AdminLayout = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 p-8">
+      <div className="flex-1 p-8 overflow-auto">
         <Outlet />
       </div>
     </div>
