@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { LayoutDashboard, Package, ShoppingCart, Users, Settings } from 'lucide-react';
+import { ThemeToggle } from '../ThemeToggle';
 
 const AdminLayout = () => {
   const location = useLocation();
@@ -26,11 +27,12 @@ const AdminLayout = () => {
   ];
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-background">
       {/* Sidebar */}
-      <div className="w-64 bg-white shadow-md">
-        <div className="p-6 border-b">
-          <Link to="/admin" className="text-xl font-bold text-brand">Admin Panel</Link>
+      <div className="w-64 bg-card shadow-md">
+        <div className="p-6 border-b flex justify-between items-center">
+          <Link to="/admin" className="text-xl font-bold text-foreground">Admin Panel</Link>
+          <ThemeToggle />
         </div>
         <nav className="p-4">
           <ul className="space-y-2">
@@ -39,7 +41,9 @@ const AdminLayout = () => {
                 <Link
                   to={item.path}
                   className={`flex items-center gap-3 p-3 rounded-md transition-colors ${
-                    activePage === item.id ? 'bg-brand text-white' : 'hover:bg-gray-100'
+                    activePage === item.id 
+                      ? 'bg-primary text-primary-foreground' 
+                      : 'hover:bg-muted text-foreground'
                   }`}
                   onClick={() => setActivePage(item.id)}
                 >
@@ -53,7 +57,7 @@ const AdminLayout = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 p-8 overflow-auto">
+      <div className="flex-1 p-8 overflow-auto bg-background text-foreground">
         <Outlet />
       </div>
     </div>
