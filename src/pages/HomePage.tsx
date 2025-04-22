@@ -1,6 +1,6 @@
-
 import { Link } from 'react-router-dom';
 import ProductGrid from '@/components/products/ProductGrid';
+import { ShieldCheck, Award, Star } from 'lucide-react';
 
 const HomePage = () => {
   return (
@@ -90,6 +90,76 @@ const HomePage = () => {
                 </div>
               </div>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* How We Are Section */}
+      <section className="py-16 px-4 bg-white">
+        <div className="container mx-auto max-w-6xl">
+          <h2 className="text-3xl font-semibold text-center text-brand-dark mb-12">How We Are</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="space-y-6">
+              <h3 className="text-2xl font-semibold text-brand-dark">Our Story</h3>
+              <p className="text-gray-600 leading-relaxed">
+                We started with a simple mission: to create high-quality, comfortable clothing that looks great and lasts long. 
+                Our journey began with a small collection of hoodies, and today we're proud to offer a wide range of clothing 
+                essentials that help you express your style.
+              </p>
+            </div>
+            <div className="space-y-6">
+              <h3 className="text-2xl font-semibold text-brand-dark">Our Values</h3>
+              <ul className="space-y-4 text-gray-600">
+                <li className="flex items-start gap-3">
+                  <span className="text-brand mt-1">•</span>
+                  <span>Quality materials and craftsmanship in every piece</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-brand mt-1">•</span>
+                  <span>Sustainable and ethical production practices</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-brand mt-1">•</span>
+                  <span>Customer satisfaction as our top priority</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Features Section */}
+      <section className="py-16 px-4 bg-gray-50">
+        <div className="container mx-auto max-w-6xl">
+          <h2 className="text-3xl font-semibold text-center text-brand-dark mb-12">Why Choose Us</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center p-6">
+              <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center">
+                <ShieldCheck className="w-8 h-8 text-brand" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Quality Guarantee</h3>
+              <p className="text-gray-600">
+                Every piece is crafted with premium materials and undergoes strict quality checks.
+              </p>
+            </div>
+            <div className="text-center p-6">
+              <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center">
+                <Award className="w-8 h-8 text-brand" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Premium Service</h3>
+              <p className="text-gray-600">
+                Dedicated support team and hassle-free returns within 30 days.
+              </p>
+            </div>
+            <div className="text-center p-6">
+              <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center">
+                <Star className="w-8 h-8 text-brand" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Best Value</h3>
+              <p className="text-gray-600">
+                Competitive prices without compromising on quality or style.
+              </p>
+            </div>
           </div>
         </div>
       </section>
