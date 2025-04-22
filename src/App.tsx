@@ -1,3 +1,4 @@
+
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 import { Toaster } from "@/components/ui/toaster";
@@ -18,6 +19,14 @@ import NotFoundPage from "@/pages/NotFoundPage";
 import { CartProvider } from "@/context/CartContext";
 import { AuthProvider } from "@/context/AuthContext";
 
+// Admin imports
+import AdminLayout from "@/components/admin/AdminLayout";
+import Dashboard from "@/pages/admin/Dashboard";
+import Products from "@/pages/admin/Products";
+import Orders from "@/pages/admin/Orders";
+import Users from "@/pages/admin/Users";
+import Settings from "@/pages/admin/Settings";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -30,6 +39,7 @@ const App = () => (
           <CartProvider>
             <BrowserRouter>
               <Routes>
+                {/* Main Site Routes */}
                 <Route path="/" element={<Layout />}>
                   <Route index element={<HomePage />} />
                   <Route path="products" element={<ProductsPage />} />
@@ -41,6 +51,15 @@ const App = () => (
                   <Route path="login" element={<LoginPage />} />
                   <Route path="register" element={<RegisterPage />} />
                   <Route path="*" element={<NotFoundPage />} />
+                </Route>
+                
+                {/* Admin Routes */}
+                <Route path="/admin" element={<AdminLayout />}>
+                  <Route index element={<Dashboard />} />
+                  <Route path="products" element={<Products />} />
+                  <Route path="orders" element={<Orders />} />
+                  <Route path="users" element={<Users />} />
+                  <Route path="settings" element={<Settings />} />
                 </Route>
               </Routes>
             </BrowserRouter>
