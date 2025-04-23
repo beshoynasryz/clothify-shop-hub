@@ -24,12 +24,24 @@ export function ThemeProvider({
   children,
   defaultTheme = "light",
 }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(defaultTheme);
+  // Check for saved theme in localStorage or use defaultTheme
+  const [theme, setTheme] = useState<Theme>(() => {
+    // Check for theme in localStorage
+    if (typeof window !== "undefined") {
+      const savedTheme = localStorage.getItem("theme") as Theme;
+      return savedTheme || defaultTheme;
+    }
+    return defaultTheme;
+  });
 
+  // Update localStorage and document classes when theme changes
   useEffect(() => {
     const root = window.document.documentElement;
     root.classList.remove("light", "dark");
     root.classList.add(theme);
+    
+    // Save theme to localStorage
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   return (
